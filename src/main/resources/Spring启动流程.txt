@@ -1,0 +1,6 @@
+new ClassPathXmlApplicationContext("xml")
+-------》AbstractApplicationContext构造方法
+         ---setConfigLocations(xml) 创建解析器并解析配置文件
+         ---refresh
+            --obtainFreshBeanFactory 创建beanFactory,解析传统，自定义标签
+              --refreshBeanFactory把xml中的标签封装成BeanDefinition对象

@@ -24,8 +24,8 @@ public class LambdaTest {
         testPrint("aaa", (str) -> System.out.println(str));
 
         /**
-         * 修改表达式方法返回结果时，修改无效
-         * 如下：testPrintReturn 返回仍是 str1+str2
+         * 如果表达式方法体有内容，重写方法，修改无效
+         * 返回仍是 str1+str2
          */
         String str = testPrintReturn("aaa","bbb", (str1,str2) -> {
             return str1 + "###" + str2;
