@@ -1,6 +1,22 @@
 new ClassPathXmlApplicationContext("xml")
--------》AbstractApplicationContext构造方法
-         ---setConfigLocations(xml) 创建解析器并解析配置文件
-         ---refresh
-            --obtainFreshBeanFactory 创建beanFactory,解析传统，自定义标签
-              --refreshBeanFactory把xml中的标签封装成BeanDefinition对象
+    AbstractApplicationContext构造方法
+       setConfigLocations(xml) 创建解析器并解析配置文件
+       refresh（模板设计模式）主流程方法
+           obtainFreshBeanFactory 创建beanFactory,解析传统，自定义标签
+               refreshBeanFactory把xml中的标签封装成BeanDefinition对象
+               createBeanFactory
+                   customizeBeanFactory设置是否允许循环依赖(默认true)，是否允许相同名称创建不同bean实现(默认false，有就覆盖)
+                   loadBeanDefinitions(beanFactory) 解析xml并封装成beanDefinition
+                       beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory) xml解析器
+                       loadBeanDefinitions(beanDefinitionReader)
+                           reader.loadBeanDefinitions(configLocations); 委托模式
+                           。。。
+                           registerBeanDefinitions
+                              parseBeanDefinitions
+                                  #### beanDefinition属性解析：
+                                  # MutablePropertyValues ConstructorArgumentValues MethodOverrides
+                                  # id class name parent abstract lazy-init autowire depends-on primary
+                                  # autowire-candidate dependency-check
+                                  #init-method destory-method factory-method
+                                   parseDefaultElement 默认标签解析
+                                   parseCustomElement  自定义标签解读
