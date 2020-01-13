@@ -3,5 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/cache"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
 
-    <bean id="student1" class="wpy.bean.Student1"></bean>
+    <bean id="student" class="wpy.bean.Student" init-method="initSay" destroy-method="destorySay" ></bean>
+    <!--autowire-candidate=false 依赖注入不考虑bean，只能在xml，没有注解 -->
+    <bean id="autowirCandidateClass" class="wpy.bean.AutowirCandidateClass" autowire-candidate="false"></bean>
+
+    <bean id="man" class="wpy.bean.Man"></bean>
+    <bean id="lookUptest" class="wpy.bean.LookUptest">
+        <lookup-method name="getPepole" bean="man"></lookup-method>
+    </bean>
 </beans>

@@ -16,7 +16,8 @@ new ClassPathXmlApplicationContext("xml")
                                   #### beanDefinition属性解析：
                                   # MutablePropertyValues ConstructorArgumentValues MethodOverrides
                                   # id class name parent abstract lazy-init autowire depends-on primary
-                                  # autowire-candidate dependency-check
+                                  # autowire-candidate（只有在xml才有用到，设置false在依赖注入时，不考虑该bean）
+                                  # dependency-check
                                   #init-method destory-method factory-method
                                    parseDefaultElement 默认标签解析
                                    parseCustomElement  自定义标签解读

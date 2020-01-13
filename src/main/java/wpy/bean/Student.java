@@ -1,6 +1,7 @@
 package wpy.bean;
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,8 +10,15 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 @Data
-@Service
 public class Student {
-    private String name = "student";
+
+    private String name;
     private String pwd;
+
+    void initSay() {
+        System.out.println("############ init student");
+    }
+    void destorySay() {
+        System.out.println("############ destory student");
+    }
 }

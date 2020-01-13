@@ -1,10 +1,13 @@
 package wpy.test;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.EmbeddedWebApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
+import wpy.bean.LookUptest;
 import wpy.bean.Student;
 import wpy.bean.Student1;
 
@@ -19,7 +22,7 @@ public class MyTest {
     public void testAnnotation() {
         // 注解启动
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext("wpy.bean");
-        Student student = (Student) annotationConfigApplicationContext.getBean("student");
+        Student1 student = (Student1) annotationConfigApplicationContext.getBean("student1");
         System.out.println(student.getName());
     }
 
@@ -27,8 +30,10 @@ public class MyTest {
     public void testXml() {
         // xml启动
         ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("spring.xml");
-        Student1 stu1 = (Student1) classPathXmlApplicationContext.getBean("student1");
-        System.out.println(stu1.getName());
+       // Student stu = (Student) classPathXmlApplicationContext.getBean("student");
+       // System.out.println(stu.getName());
+        // 容器关闭才会调用destory方法
+       // classPathXmlApplicationContext.registerShutdownHook();
     }
     @Test
     public void testOther() {
@@ -36,5 +41,14 @@ public class MyTest {
 //        new FileSystemXmlApplicationContext("");
         // springboot启动会使用到这个启动spring/tomcat
 //        new EmbeddedWebApplicationContext();
+    }
+
+
+    @Test
+    public  void  testLookUp() {
+
+        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("spring.xml");
+        LookUptest lookUptest = (LookUptest)classPathXmlApplicationContext.getBean("lookUptest") ;
+        lookUptest.say();
     }
 }

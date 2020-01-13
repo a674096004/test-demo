@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
  * @Description: xml
  */
 @Data
+@Service
 public class Student1 {
     private String name = "student1";
     private String pwd;
