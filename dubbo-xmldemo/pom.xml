@@ -11,13 +11,16 @@
 
     <artifactId>dubbo-xml-demo</artifactId>
 
+    <properties>
+        <dubbo.version>2.6.5</dubbo.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.py-wang.daily</groupId>
             <artifactId>dubbo-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo-config-spring</artifactId>
