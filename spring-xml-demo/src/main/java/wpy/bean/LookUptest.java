@@ -1,8 +1,5 @@
 package wpy.bean;
 
-import org.springframework.beans.factory.annotation.Lookup;
-import org.springframework.stereotype.Service;
-
 /**
  * @auther: User
  * @Date: 2020/1/13 23:

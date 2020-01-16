@@ -7,5 +7,5 @@ package knownlambda;
  */
 @FunctionalInterface
 public interface PrintIReturnnterFace<T> {
-    T print(T t1,T t2);
+    T print(T t1, T t2);
 }
